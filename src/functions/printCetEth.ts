@@ -39,7 +39,7 @@ export const printCetEth = (response: IResponse, wallet: TWallet) => {
   };
 
   const result = {
-    type: "cet-etc",
+    type: "cet-eth",
     rq: requestNumber,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     cet,
