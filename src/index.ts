@@ -3,21 +3,27 @@ import { getMarket } from "./utils";
 import * as printers from "./functions";
 
 const wallet = {
-  ADA_WALLET: 50 / 1.312004,
-  BCH_WALLET: 50 / 487,
-  BNB_WALLET: 50 / 282.5198,
-  BTC_WALLET: 50 / 33297.2,
-  CET_WALLET: 50 / 0.057365,
-  DOGE_WALLET: 50 / 0.24256157,
-  ETH_WALLET: 50 / 2055.76,
-  LTC_WALLET: 50 / 133.51,
-  VET_WALLET: 50 / 0.084079,
-  XRP_WALLET: 50 / 0.648156,
+  ADA_WALLET: 50 / 1.3562,
+  BCH_WALLET: 50 / 491.2,
+  BNB_WALLET: 50 / 284.01,
+  BTC_WALLET: 50 / 33540,
+  CET_WALLET: 50 / 0.05854,
+  DOGE_WALLET: 50 / 0.24385698,
+  DOT_WALLET: 50 / 15.25,
+  EOS_WALLET: 50 / 3.8622,
+  ETC_WALLET: 50 / 53.1,
+  ETH_WALLET: 50 / 2115,
+  LTC_WALLET: 50 / 134.62,
+  SOL_WALLET: 50 / 32.8384,
+  TRX_WALLET: 50 / 0.064825,
+  VET_WALLET: 50 / 0.086159,
+  XMR_WALLET: 50 / 209.7,
+  XRP_WALLET: 50 / 0.647171,
 };
 
 export type TWallet = typeof wallet;
 
-let requestNumber = 1115;
+let requestNumber = 2776;
 
 const getPrices = async () => {
   const results = await Promise.all([
@@ -59,7 +65,34 @@ const getPrices = async () => {
     getMarket("XRPUSDT"),
     getMarket("XRPBTC"),
     getMarket("XRPBCH"),
+    // etc
+    getMarket("ETCUSDT"),
+    getMarket("ETCBTC"),
+    getMarket("ETCBCH"),
+    // dot
+    getMarket("DOTUSDT"),
+    getMarket("DOTBTC"),
+    getMarket("DOTBCH"),
+    // sol
+    getMarket("SOLUSDT"),
+    getMarket("SOLBTC"),
+    getMarket("SOLBCH"),
+    // trx
+    getMarket("TRXUSDT"),
+    getMarket("TRXBTC"),
+    getMarket("TRXBCH"),
+    getMarket("TRXETH"),
+    // eos
+    getMarket("EOSUSDT"),
+    getMarket("EOSBTC"),
+    getMarket("EOSBCH"),
+    getMarket("EOSETH"),
+    // xmr
+    getMarket("XMRUSDT"),
+    getMarket("XMRBTC"),
+    getMarket("XMRBCH"),
   ]);
+
   const btc = results[0];
   // bch
   const bch = results[1];
@@ -98,6 +131,32 @@ const getPrices = async () => {
   const xrp = results[26];
   const xrpBtc = results[27];
   const xrpBch = results[28];
+  // etc
+  const etc = results[29];
+  const etcBtc = results[30];
+  const etcBch = results[31];
+  // dot
+  const dot = results[32];
+  const dotBtc = results[33];
+  const dotBch = results[34];
+  // sol
+  const sol = results[35];
+  const solBtc = results[36];
+  const solBch = results[37];
+  // trx
+  const trx = results[38];
+  const trxBtc = results[39];
+  const trxBch = results[40];
+  const trxEth = results[41];
+  // eos
+  const eos = results[42];
+  const eosBtc = results[43];
+  const eosBch = results[44];
+  const eosEth = results[45];
+  // xmr
+  const xmr = results[46];
+  const xmrBtc = results[47];
+  const xmrBch = results[48];
 
   printers.printBchBtc({ requestNumber, bch, btc, bchBtc }, wallet);
   // eth
@@ -126,6 +185,26 @@ const getPrices = async () => {
   // xrp
   printers.printXrpBtc({ requestNumber, xrp, btc, xrpBtc }, wallet);
   printers.printXrpBch({ requestNumber, xrp, bch, xrpBch }, wallet);
+  // etc
+  printers.printEtcBtc({ requestNumber, etc, btc, etcBtc }, wallet);
+  printers.printEtcBch({ requestNumber, etc, bch, etcBch }, wallet);
+  // dot
+  printers.printDotBtc({ requestNumber, dot, btc, dotBtc }, wallet);
+  printers.printDotBch({ requestNumber, dot, bch, dotBch }, wallet);
+  // sol
+  printers.printSolBtc({ requestNumber, sol, btc, solBtc }, wallet);
+  printers.printSolBch({ requestNumber, sol, bch, solBch }, wallet);
+  // trx
+  printers.printTrxBtc({ requestNumber, trx, btc, trxBtc }, wallet);
+  printers.printTrxBch({ requestNumber, trx, bch, trxBch }, wallet);
+  printers.printTrxEth({ requestNumber, trx, eth, trxEth }, wallet);
+  // eos
+  printers.printEosBtc({ requestNumber, eos, btc, eosBtc }, wallet);
+  printers.printEosBch({ requestNumber, eos, bch, eosBch }, wallet);
+  printers.printEosEth({ requestNumber, eos, eth, eosEth }, wallet);
+  // xmr
+  printers.printXmrBtc({ requestNumber, xmr, btc, xmrBtc }, wallet);
+  printers.printXmrBch({ requestNumber, xmr, bch, xmrBch }, wallet);
 
   requestNumber++;
 };
