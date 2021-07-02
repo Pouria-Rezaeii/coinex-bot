@@ -1,0 +1,1 @@
+{"type":"xrp-bch","rq":1530,"time":"date: 7/2/2021, time: 2:55:25 PM","xrp":"0.637000","bch":"479.16","xrpBch":"0.00133770","currentXrpValue":"49.14","currentBchValue":"49.20","balance":"98.33","calculatedXrpBch":"0.0013294098","diff":"-0.0000082902","xrpToBch":{"amount":"0.103193","value":"49.45","diff":"0.31"},"bchToXrp":{"amount":"76.75","value":"48.89","diff":"-0.31"}}

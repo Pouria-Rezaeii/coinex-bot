@@ -12,6 +12,7 @@ export { printLtcBtc } from "./printLtcBtc";
 export { printLtcBch } from "./printLtcBch";
 export { printVetBtc } from "./printVetBtc";
 export { printVetBch } from "./printVetBch";
+export { printVetEth } from "./printVetEth";
 export { printBnbBtc } from "./printBnbBtc";
 export { printBnbBch } from "./printBnbBch";
 export { printXrpBtc } from "./printXrpBtc";
