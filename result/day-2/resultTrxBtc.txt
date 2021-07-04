@@ -1,0 +1,1 @@
+{"type":"trx-btc","rq":3145,"time":"date: 7/2/2021, time: 9:41:01 PM","trx":"0.065004","btc":"33574.61","trxBtc":"0.0000019096","currentTrxValue":"50.14","currentBtcValue":"50.05","balance":"100.19","calculatedTrxBtc":"0.0000019361","diff":"0.0000000265","trxToBtc":{"amount":"0.001473","value":"49.45","diff":"-0.69"},"btcToTrx":{"amount":"780.66","value":"50.75","diff":"0.70"}}

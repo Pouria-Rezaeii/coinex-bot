@@ -1,0 +1,1 @@
+{"type":"dot-btc","rq":676,"time":"date: 7/3/2021, time: 1:08:05 PM","dot":"15.4261","btc":"34511.42","dotBtc":"0.00042587","currentDotValue":"50.58","currentBtcValue":"51.45","balance":"102.03","calculatedDotBtc":"0.0004469854","diff":"0.0000211154","dotToBtc":{"amount":"0.001396","value":"48.19","diff":"-2.39"},"btcToDot":{"amount":"3.50","value":"54.00","diff":"2.55"}}

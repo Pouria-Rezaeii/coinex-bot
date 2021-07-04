@@ -1,0 +1,1 @@
+{"type":"cet-bch","rq":2038,"time":"date: 7/4/2021, time: 5:56:53 PM","cet":"0.062652","bch":"536.72","cetBch":"0.00011608","currentCetValue":"53.51","currentBchValue":"54.63","balance":"108.15","calculatedCetBch":"0.0001167313","diff":"0.0000006513","cetToBch":{"amount":"0.099146","value":"53.21","diff":"-0.30"},"bchToCet":{"amount":"876.91","value":"54.94","diff":"0.31"}}

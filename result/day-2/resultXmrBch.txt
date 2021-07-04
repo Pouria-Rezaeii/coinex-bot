@@ -1,0 +1,1 @@
+{"type":"xmr-bch","rq":3631,"time":"date: 7/2/2021, time: 11:42:36 PM","xmr":"205.52","bch":"484.06","xmrBch":"0.42177825","currentXmrValue":"49.00","currentBchValue":"49.27","balance":"98.28","calculatedXmrBch":"0.4245754659","diff":"0.0027972159","xmrToBch":{"amount":"0.100567","value":"48.68","diff":"-0.32"},"bchToXmr":{"amount":"0.24","value":"49.60","diff":"0.33"}}

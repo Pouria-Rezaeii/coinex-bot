@@ -1,0 +1,1 @@
+{"type":"eos-btc","rq":884,"time":"date: 7/4/2021, time: 1:07:00 PM","eos":"4.1513","btc":"35495.00","eosBtc":"0.00011620","currentEosValue":"53.74","currentBtcValue":"52.91","balance":"106.66","calculatedEosBtc":"0.0001169545","diff":"0.0000007545","eosToBtc":{"amount":"0.001504","value":"53.40","diff":"-0.34"},"btcToEos":{"amount":"12.83","value":"53.26","diff":"0.35"}}

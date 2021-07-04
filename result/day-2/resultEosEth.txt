@@ -1,0 +1,1 @@
+{"type":"eos-eth","rq":4236,"time":"date: 7/3/2021, time: 2:13:57 AM","eos":"3.8549","eth":"2114.83","eosEth":"0.00183447","currentEosValue":"49.91","currentEthValue":"50.00","balance":"99.90","calculatedEosEth":"0.0018227943","diff":"-0.0000116757","eosToEth":{"amount":"0.023749","value":"50.23","diff":"0.32"},"ethToEos":{"amount":"12.89","value":"49.68","diff":"-0.32"}}

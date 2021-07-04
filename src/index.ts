@@ -23,7 +23,7 @@ const wallet = {
 
 export type TWallet = typeof wallet;
 
-let requestNumber = 2776;
+let requestNumber = 1;
 
 const getPrices = async () => {
   const results = await Promise.all([

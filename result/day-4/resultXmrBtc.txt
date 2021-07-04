@@ -1,0 +1,1 @@
+{"type":"xmr-btc","rq":202,"time":"date: 7/4/2021, time: 10:16:24 AM","xmr":"220.93","btc":"35000.00","xmrBtc":"0.00626275","currentXmrValue":"52.68","currentBtcValue":"52.18","balance":"104.85","calculatedXmrBtc":"0.0063122857","diff":"0.0000495357","xmrToBtc":{"amount":"0.001493","value":"52.26","diff":"-0.42"},"btcToXmr":{"amount":"0.24","value":"52.59","diff":"0.41"}}

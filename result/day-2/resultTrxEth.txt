@@ -1,0 +1,1 @@
+{"type":"trx-eth","rq":4236,"time":"date: 7/3/2021, time: 2:13:57 AM","trx":"0.065500","eth":"2114.83","trxEth":"0.00003123","currentTrxValue":"50.52","currentEthValue":"50.00","balance":"100.52","calculatedTrxEth":"0.0000309718","diff":"-0.0000002582","trxToEth":{"amount":"0.024088","value":"50.94","diff":"0.42"},"ethToTrx":{"amount":"756.99","value":"49.58","diff":"-0.42"}}

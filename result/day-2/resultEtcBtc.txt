@@ -1,0 +1,1 @@
+{"type":"etc-btc","rq":4234,"time":"date: 7/3/2021, time: 2:13:27 AM","etc":"52.9767","btc":"33479.19","etcBtc":"0.00157025","currentEtcValue":"49.88","currentBtcValue":"49.91","balance":"99.79","calculatedEtcBtc":"0.0015823770","diff":"0.0000121270","etcToBtc":{"amount":"0.001479","value":"49.50","diff":"-0.38"},"btcToEtc":{"amount":"0.95","value":"50.29","diff":"0.38"}}

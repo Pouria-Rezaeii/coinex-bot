@@ -1,1 +1,0 @@
-{"type":"vet-eth","rq":2786,"time":"date: 7/2/2021, time: 8:11:12 PM","vet":"0.086798","eth":"2112.63","vetEth":"0.00004066","currentVetValue":"50.37","currentEthValue":"49.94","balance":"100.31","calculatedVetEth":"0.0000410853","diff":"0.0000004253","vetToEth":{"amount":"0.023596","value":"49.85","diff":"-0.52"},"ethToVet":{"amount":"581.42","value":"50.47","diff":"0.53"}}
