@@ -1,0 +1,1 @@
+{"type":"bnb-btc","rq":951,"time":"date: 7/5/2021, time: 3:57:04 PM","bnb":"301.7998","btc":"33716.99","bnbBtc":"0.00886582","currentBnbValue":"53.13","currentBtcValue":"50.26","balance":"103.40","calculatedBnbBtc":"0.0089509710","diff":"0.0000851510","bnbToBtc":{"amount":"0.001561","value":"52.63","diff":"-0.50"},"btcToBnb":{"amount":"0.17","value":"50.75","diff":"0.49"}}

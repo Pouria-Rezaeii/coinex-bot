@@ -1,0 +1,1 @@
+{"type":"ada-btc","rq":992,"time":"date: 7/5/2021, time: 4:07:20 PM","ada":"1.397403","btc":"33585.15","adaBtc":"0.0000412828","currentAdaValue":"51.52","currentBtcValue":"50.07","balance":"101.59","calculatedAdaBtc":"0.0000416078","diff":"0.0000003250","adaToBtc":{"amount":"0.001522","value":"51.12","diff":"-0.40"},"btcToAda":{"amount":"36.11","value":"50.46","diff":"0.39"}}

@@ -1,0 +1,1 @@
+{"type":"cet-eth","rq":946,"time":"date: 7/5/2021, time: 3:55:49 PM","cet":"0.059723","eth":"2245.01","cetEth":"0.00002645","currentCetValue":"51.01","currentEthValue":"53.07","balance":"104.08","calculatedCetEth":"0.0000266026","diff":"0.0000001526","cetToEth":{"amount":"0.022591","value":"50.72","diff":"-0.29"},"ethToCet":{"amount":"893.79","value":"53.38","diff":"0.31"}}

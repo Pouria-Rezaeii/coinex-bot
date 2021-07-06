@@ -1,0 +1,1 @@
+{"type":"bch-btc","rq":947,"time":"date: 7/5/2021, time: 3:56:01 PM","bch":"506.00","btc":"33670.00","bchBtc":"0.01491213","currentBchValue":"51.51","currentBtcValue":"50.19","balance":"101.70","calculatedBchBtc":"0.0150282150","diff":"0.0001160850","bchToBtc":{"amount":"0.001518","value":"51.11","diff":"-0.40"},"btcToBch":{"amount":"0.09997","value":"50.58","diff":"0.39"}}

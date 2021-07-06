@@ -1,0 +1,1 @@
+{"type":"xrp-btc","rq":947,"time":"date: 7/5/2021, time: 3:56:01 PM","xrp":"0.656287","btc":"33670.00","xrpBtc":"0.0000196206","currentXrpValue":"50.70","currentBtcValue":"50.19","balance":"100.90","calculatedXrpBtc":"0.0000194917","diff":"-0.0000001289","xrpToBtc":{"amount":"0.001516","value":"51.04","diff":"0.34"},"btcToXrp":{"amount":"75.98","value":"49.86","diff":"-0.33"}}

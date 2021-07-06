@@ -1,4 +1,14 @@
-import { IWallet, IResponse } from ".";
+export interface IResponse {
+  requestNumber: number;
+  cet: number;
+  btc: number;
+  cetBtc: number;
+}
+
+export interface IWallet {
+  type: "cet" | "btc";
+  value: number;
+}
 
 export type TCalculator = (
   response: IResponse,

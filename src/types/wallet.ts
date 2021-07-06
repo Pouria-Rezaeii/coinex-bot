@@ -1,4 +1,3 @@
-export interface IWallet {
-  type: "cet" | "btc";
-  value: number;
-}
+import { TWallet as Wallet } from "..";
+
+export type TWallet = Wallet;

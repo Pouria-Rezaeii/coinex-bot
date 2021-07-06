@@ -1,0 +1,1 @@
+{"type":"eth-btc","rq":2418,"time":"date: 7/5/2021, time: 10:04:59 PM","eth":"2182.65","btc":"33527.80","ethBtc":"0.06548662","currentEthValue":"51.60","currentBtcValue":"49.98","balance":"101.58","calculatedEthBtc":"0.0650997083","diff":"-0.0003869117","ethToBtc":{"amount":"0.001548","value":"51.91","diff":"0.31"},"btcToEth":{"amount":"0.02276","value":"49.69","diff":"-0.29"}}

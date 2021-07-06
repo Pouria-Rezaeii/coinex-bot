@@ -1,27 +1,28 @@
-import { getAccountInfo } from "./api/getAccountInfo";
+import { getAccountInfo } from "./api";
 import { getMarket } from "./utils";
-import * as printers from "./functions";
+import * as printers from "./functions/printers";
+import * as traders from "./functions/traders";
 
-const wallet = {
-  ADA_WALLET: 50 / 1.3562,
-  BCH_WALLET: 50 / 491.2,
-  BNB_WALLET: 50 / 284.01,
-  BTC_WALLET: 50 / 33540,
-  CET_WALLET: 50 / 0.05854,
-  DOGE_WALLET: 50 / 0.24385698,
-  DOT_WALLET: 50 / 15.25,
-  EOS_WALLET: 50 / 3.8622,
-  ETC_WALLET: 50 / 53.1,
-  ETH_WALLET: 50 / 2115,
-  LTC_WALLET: 50 / 134.62,
-  SOL_WALLET: 50 / 32.8384,
-  TRX_WALLET: 50 / 0.064825,
-  VET_WALLET: 50 / 0.086159,
-  XMR_WALLET: 50 / 209.7,
-  XRP_WALLET: 50 / 0.647171,
+const WALLET = {
+  ADA: 50 / 1.3562,
+  BCH: 50 / 491.2,
+  BNB: 50 / 284.01,
+  BTC: 50 / 33540,
+  CET: 50 / 0.05854,
+  DOGE: 50 / 0.24385698,
+  DOT: 50 / 15.25,
+  EOS: 50 / 3.8622,
+  ETC: 50 / 53.1,
+  ETH: 50 / 2115,
+  LTC: 50 / 134.62,
+  SOL: 50 / 32.8384,
+  TRX: 50 / 0.064825,
+  VET: 50 / 0.086159,
+  XMR: 50 / 209.7,
+  XRP: 50 / 0.647171,
 };
 
-export type TWallet = typeof wallet;
+export type TWallet = typeof WALLET;
 
 let requestNumber = 1;
 
@@ -158,53 +159,25 @@ const getPrices = async () => {
   const xmrBtc = results[47];
   const xmrBch = results[48];
 
-  printers.printBchBtc({ requestNumber, bch, btc, bchBtc }, wallet);
-  // eth
-  printers.printEthBtc({ requestNumber, eth, btc, ethBtc }, wallet);
-  printers.printEthBch({ requestNumber, eth, bch, ethBch }, wallet);
-  // cet
-  printers.printCetBtc({ requestNumber, cet, btc, cetBtc }, wallet);
-  printers.printCetBch({ requestNumber, cet, bch, cetBch }, wallet);
-  printers.printCetEth({ requestNumber, cet, eth, cetEth }, wallet);
-  // ada
-  printers.printAdaBtc({ requestNumber, ada, btc, adaBtc }, wallet);
-  printers.printAdaBch({ requestNumber, ada, bch, adaBch }, wallet);
-  // doge
-  printers.printDogeBtc({ requestNumber, doge, btc, dogeBtc }, wallet);
-  printers.printDogeBch({ requestNumber, doge, bch, dogeBch }, wallet);
-  // ltc
-  printers.printLtcBtc({ requestNumber, ltc, btc, ltcBtc }, wallet);
-  printers.printLtcBch({ requestNumber, ltc, bch, ltcBch }, wallet);
-  // vet
-  printers.printVetBtc({ requestNumber, vet, btc, vetBtc }, wallet);
-  printers.printVetBch({ requestNumber, vet, bch, vetBch }, wallet);
-  printers.printVetEth({ requestNumber, vet, eth, vetEth }, wallet);
-  // bnb
-  printers.printBnbBtc({ requestNumber, bnb, btc, bnbBtc }, wallet);
-  printers.printBnbBch({ requestNumber, bnb, bch, bnbBch }, wallet);
-  // xrp
-  printers.printXrpBtc({ requestNumber, xrp, btc, xrpBtc }, wallet);
-  printers.printXrpBch({ requestNumber, xrp, bch, xrpBch }, wallet);
-  // etc
-  printers.printEtcBtc({ requestNumber, etc, btc, etcBtc }, wallet);
-  printers.printEtcBch({ requestNumber, etc, bch, etcBch }, wallet);
-  // dot
-  printers.printDotBtc({ requestNumber, dot, btc, dotBtc }, wallet);
-  printers.printDotBch({ requestNumber, dot, bch, dotBch }, wallet);
-  // sol
-  printers.printSolBtc({ requestNumber, sol, btc, solBtc }, wallet);
-  printers.printSolBch({ requestNumber, sol, bch, solBch }, wallet);
-  // trx
-  printers.printTrxBtc({ requestNumber, trx, btc, trxBtc }, wallet);
-  printers.printTrxBch({ requestNumber, trx, bch, trxBch }, wallet);
-  printers.printTrxEth({ requestNumber, trx, eth, trxEth }, wallet);
-  // eos
-  printers.printEosBtc({ requestNumber, eos, btc, eosBtc }, wallet);
-  printers.printEosBch({ requestNumber, eos, bch, eosBch }, wallet);
-  printers.printEosEth({ requestNumber, eos, eth, eosEth }, wallet);
-  // xmr
-  printers.printXmrBtc({ requestNumber, xmr, btc, xmrBtc }, wallet);
-  printers.printXmrBch({ requestNumber, xmr, bch, xmrBch }, wallet);
+  console.log("rq: ", requestNumber);
+
+  traders.trader_30(requestNumber, results);
+  traders.trader_35(requestNumber, results);
+  traders.trader_40(requestNumber, results);
+  traders.trader_45(requestNumber, results);
+  traders.trader_50(requestNumber, results);
+  traders.trader_55(requestNumber, results);
+  traders.trader_60(requestNumber, results);
+
+  printers.printAdaBch({ requestNumber, ada, bch, adaBch }, WALLET);
+  printers.printLtcBch({ requestNumber, ltc, bch, ltcBch }, WALLET);
+  printers.printVetBch({ requestNumber, vet, bch, vetBch }, WALLET);
+  printers.printBnbBch({ requestNumber, bnb, bch, bnbBch }, WALLET);
+  printers.printEtcBch({ requestNumber, etc, bch, etcBch }, WALLET);
+  printers.printDotBch({ requestNumber, dot, bch, dotBch }, WALLET);
+  printers.printSolBch({ requestNumber, sol, bch, solBch }, WALLET);
+  printers.printTrxBch({ requestNumber, trx, bch, trxBch }, WALLET);
+  printers.printEosBch({ requestNumber, eos, bch, eosBch }, WALLET);
 
   requestNumber++;
 };
@@ -213,4 +186,4 @@ getAccountInfo();
 
 setInterval(() => {
   getPrices();
-}, 15000);
+}, 3000);
