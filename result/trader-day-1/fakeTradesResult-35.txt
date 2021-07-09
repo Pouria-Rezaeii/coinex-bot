@@ -1,0 +1,4 @@
+{"rq":1911,"time":"date: 7/6/2021, time: 8:25:12 PM","type":"bch to bnb","wallet":{"BCH":0.40716612377850164,"ADA":0,"BNB":0.16416761576715258,"DOGE":0,"DOT":0,"EOS":0,"ETC":0,"ETH":0,"LTC":0,"SOL":0,"TRX":0,"VET":0,"XRP":0},"avPortion":4}
+{"rq":3204,"time":"date: 7/6/2021, time: 9:29:52 PM","type":"bnb to bch","wallet":{"BCH":0.5102956355667148,"ADA":0,"BNB":0,"DOGE":0,"DOT":0,"EOS":0,"ETC":0,"ETH":0,"LTC":0,"SOL":0,"TRX":0,"VET":0,"XRP":0},"avPortion":5}
+{"rq":4597,"time":"date: 7/6/2021, time: 10:51:35 PM","type":"bch to dot","wallet":{"BCH":0.4082365084533718,"ADA":0,"BNB":0,"DOGE":0,"DOT":3.2658356339872188,"EOS":0,"ETC":0,"ETH":0,"LTC":0,"SOL":0,"TRX":0,"VET":0,"XRP":0},"avPortion":4}
+{"rq":4646,"time":"date: 7/6/2021, time: 10:54:07 PM","type":"dot to bch","wallet":{"BCH":0.5117535699104393,"ADA":0,"BNB":0,"DOGE":0,"DOT":0,"EOS":0,"ETC":0,"ETH":0,"LTC":0,"SOL":0,"TRX":0,"VET":0,"XRP":0},"avPortion":5}

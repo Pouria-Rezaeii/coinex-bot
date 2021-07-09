@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  sol: number;
-  bch: number;
-  solBch: number;
-}
-
-export const printSolBch = (response: IResponse, wallet: TWallet) => {
-  const { sol, bch, solBch, requestNumber } = response;
-  const { SOL, BCH } = wallet;
+export const printSolBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { sol, bch, solBch } = extractCurrencies(results);
+  const { sol: SOL, bch: BCH } = wallet;
 
   const currentSolValue = (sol * SOL).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printSolBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "sol-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     sol,
     bch,
@@ -52,9 +46,7 @@ export const printSolBch = (response: IResponse, wallet: TWallet) => {
     bchToSol,
   };
 
-  // console.log(result);
-
-  if (Number(bchToSolDiff) > 0.3 || Number(solToBchDiff) > 0.3) {
+  if (Number(bchToSolDiff) > 0.03 || Number(solToBchDiff) > 0.03) {
     fs.appendFile("resultSolBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

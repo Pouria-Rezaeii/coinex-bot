@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  bnb: number;
-  bch: number;
-  bnbBch: number;
-}
-
-export const printBnbBch = (response: IResponse, wallet: TWallet) => {
-  const { bnb, bch, bnbBch, requestNumber } = response;
-  const { BNB, BCH } = wallet;
+export const printBnbBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { bnb, bch, bnbBch } = extractCurrencies(results);
+  const { bnb: BNB, bch: BCH } = wallet;
 
   const currentBnbValue = (bnb * BNB).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printBnbBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "bnb-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     bnb,
     bch,
@@ -52,9 +46,7 @@ export const printBnbBch = (response: IResponse, wallet: TWallet) => {
     bchToBnb,
   };
 
-  // console.log(result);
-
-  if (Number(bchToBnbDiff) > 0.3 || Number(bnbToBchDiff) > 0.3) {
+  if (Number(bchToBnbDiff) > 0.03 || Number(bnbToBchDiff) > 0.03) {
     fs.appendFile("resultBnbBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

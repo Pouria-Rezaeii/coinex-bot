@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  ltc: number;
-  bch: number;
-  ltcBch: number;
-}
-
-export const printLtcBch = (response: IResponse, wallet: TWallet) => {
-  const { ltc, bch, ltcBch, requestNumber } = response;
-  const { LTC, BCH } = wallet;
+export const printLtcBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { ltc, bch, ltcBch } = extractCurrencies(results);
+  const { ltc: LTC, bch: BCH } = wallet;
 
   const currentLtcValue = (ltc * LTC).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printLtcBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "ltc-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     ltc,
     bch,
@@ -52,9 +46,7 @@ export const printLtcBch = (response: IResponse, wallet: TWallet) => {
     bchToLtc,
   };
 
-  // console.log(result);
-
-  if (Number(bchToLtcDiff) > 0.3 || Number(ltcToBchDiff) > 0.3) {
+  if (Number(bchToLtcDiff) > 0.03 || Number(ltcToBchDiff) > 0.03) {
     fs.appendFile("resultLtcBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

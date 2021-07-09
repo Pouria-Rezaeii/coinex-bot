@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  vet: number;
-  bch: number;
-  vetBch: number;
-}
-
-export const printVetBch = (response: IResponse, wallet: TWallet) => {
-  const { vet, bch, vetBch, requestNumber } = response;
-  const { VET, BCH } = wallet;
+export const printVetBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { vet, bch, vetBch } = extractCurrencies(results);
+  const { vet: VET, bch: BCH } = wallet;
 
   const currentVetValue = (vet * VET).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printVetBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "vet-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     vet,
     bch,
@@ -54,7 +48,7 @@ export const printVetBch = (response: IResponse, wallet: TWallet) => {
 
   // console.log(result);
 
-  if (Number(bchToVetDiff) > 0.3 || Number(vetToBchDiff) > 0.3) {
+  if (Number(bchToVetDiff) > 0.03 || Number(vetToBchDiff) > 0.03) {
     fs.appendFile("resultVetBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

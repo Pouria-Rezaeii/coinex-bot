@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  eos: number;
-  bch: number;
-  eosBch: number;
-}
-
-export const printEosBch = (response: IResponse, wallet: TWallet) => {
-  const { eos, bch, eosBch, requestNumber } = response;
-  const { EOS, BCH } = wallet;
+export const printEosBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { eos, bch, eosBch } = extractCurrencies(results);
+  const { eos: EOS, bch: BCH } = wallet;
 
   const currentEosValue = (eos * EOS).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printEosBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "eos-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     eos,
     bch,
@@ -52,9 +46,7 @@ export const printEosBch = (response: IResponse, wallet: TWallet) => {
     bchToEos,
   };
 
-  // console.log(result);
-
-  if (Number(bchToEosDiff) > 0.3 || Number(eosToBchDiff) > 0.3) {
+  if (Number(bchToEosDiff) > 0.03 || Number(eosToBchDiff) > 0.03) {
     fs.appendFile("resultEosBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

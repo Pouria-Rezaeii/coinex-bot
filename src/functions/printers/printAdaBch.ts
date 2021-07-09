@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  ada: number;
-  bch: number;
-  adaBch: number;
-}
-
-export const printAdaBch = (response: IResponse, wallet: TWallet) => {
-  const { ada, bch, adaBch, requestNumber } = response;
-  const { ADA, BCH } = wallet;
+export const printAdaBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { ada, bch, adaBch } = extractCurrencies(results);
+  const { ada: ADA, bch: BCH } = wallet;
 
   const currentAdaValue = (ada * ADA).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printAdaBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "ada-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     ada,
     bch,
@@ -52,9 +46,7 @@ export const printAdaBch = (response: IResponse, wallet: TWallet) => {
     bchToAda,
   };
 
-  // console.log(result);
-
-  if (Number(bchToAdaDiff) > 0.3 || Number(adaToBchDiff) > 0.3) {
+  if (Number(bchToAdaDiff) > 0.03 || Number(adaToBchDiff) > 0.03) {
     fs.appendFile("resultAdaBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

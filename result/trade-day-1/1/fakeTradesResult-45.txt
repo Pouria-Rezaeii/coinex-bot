@@ -1,3 +1,0 @@
-{"rq":893,"time":"date: 7/6/2021, time: 2:23:04 AM","type":"bch to sol","wallet":{"BCH":0.40716612377850164,"ADA":0,"BNB":0,"DOGE":0,"DOT":0,"EOS":0,"ETC":0,"ETH":0,"LTC":0,"SOL":1.5793523146205175,"TRX":0,"VET":0,"XRP":0},"avPortion":4}
-{"rq":3471,"time":"date: 7/6/2021, time: 4:32:01 AM","type":"bch to etc","wallet":{"BCH":0.30537459283387625,"ADA":0,"BNB":0,"DOGE":0,"DOT":0,"EOS":0,"ETC":0.9582936335918846,"ETH":0,"LTC":0,"SOL":1.5793523146205175,"TRX":0,"VET":0,"XRP":0},"avPortion":3}
-{"rq":4153,"time":"date: 7/6/2021, time: 5:06:11 AM","type":"sol to bch","wallet":{"BCH":0.10331227349485037,"ADA":0,"BNB":0,"DOGE":0,"DOT":0,"EOS":0,"ETC":0.9582936335918846,"ETH":0,"LTC":0,"SOL":0,"TRX":0,"VET":0,"XRP":0},"avPortion":4}

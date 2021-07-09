@@ -1,0 +1,1 @@
+{"type":"ada-bch","rq":2076,"time":"date: 7/6/2021, time: 8:33:28 PM","ada":"1.409000","bch":"509.42","adaBch":"0.00278368","currentAdaValue":"51.95","currentBchValue":"51.85","balance":"103.80","calculatedAdaBch":"0.0027658906","diff":"-0.0000177894","adaToBch":{"amount":"0.102628","value":"52.28","diff":"0.33"},"bchToAda":{"amount":"36.57","value":"51.52","diff":"-0.33"}}

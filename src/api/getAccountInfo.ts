@@ -6,14 +6,13 @@ dotenv.config();
 export const getAccountInfo = () => {
   const params = {
     access_id: process.env.ACCESS_ID,
-    tonce: 1513746038205,
+    tonce: new Date().getDate() + 30000,
   };
-  axios
-    .get(`balance/info`, {
+  return axios
+    .get("balance/info", {
       headers: { authorization: signatureMaker(params) },
-      params: params,
+      params,
     })
     .then((response) => response.data)
-    .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };

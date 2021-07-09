@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  etc: number;
-  bch: number;
-  etcBch: number;
-}
-
-export const printEtcBch = (response: IResponse, wallet: TWallet) => {
-  const { etc, bch, etcBch, requestNumber } = response;
-  const { ETC, BCH } = wallet;
+export const printEtcBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { etc, bch, etcBch } = extractCurrencies(results);
+  const { etc: ETC, bch: BCH } = wallet;
 
   const currentEtcValue = (etc * ETC).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printEtcBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "etc-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     etc,
     bch,
@@ -52,9 +46,7 @@ export const printEtcBch = (response: IResponse, wallet: TWallet) => {
     bchToEtc,
   };
 
-  // console.log(result);
-
-  if (Number(bchToEtcDiff) > 0.3 || Number(etcToBchDiff) > 0.3) {
+  if (Number(bchToEtcDiff) > 0.03 || Number(etcToBchDiff) > 0.03) {
     fs.appendFile("resultEtcBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

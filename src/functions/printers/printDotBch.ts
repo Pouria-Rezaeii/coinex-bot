@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  dot: number;
-  bch: number;
-  dotBch: number;
-}
-
-export const printDotBch = (response: IResponse, wallet: TWallet) => {
-  const { dot, bch, dotBch, requestNumber } = response;
-  const { DOT, BCH } = wallet;
+export const printDotBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { dot, bch, dotBch } = extractCurrencies(results);
+  const { dot: DOT, bch: BCH } = wallet;
 
   const currentDotValue = (dot * DOT).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printDotBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "dot-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     dot,
     bch,
@@ -52,9 +46,7 @@ export const printDotBch = (response: IResponse, wallet: TWallet) => {
     bchToDot,
   };
 
-  // console.log(result);
-
-  if (Number(bchToDotDiff) > 0.3 || Number(dotToBchDiff) > 0.3) {
+  if (Number(bchToDotDiff) > 0.03 || Number(dotToBchDiff) > 0.03) {
     fs.appendFile("resultDotBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

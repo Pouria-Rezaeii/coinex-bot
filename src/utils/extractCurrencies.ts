@@ -1,68 +1,39 @@
 export const extractCurrencies = (results: any[]) => {
   return {
-    btc: results[0],
     // bch
-    bch: results[1],
-    bchBtc: results[2],
-    // eth
-    eth: results[3],
-    ethBtc: results[4],
-    ethBch: results[5],
-    // cet
-    cet: results[6],
-    cetBtc: results[7],
-    cetBch: results[8],
-    cetEth: results[9],
+    bch: results[0 + 1],
     // ada
-    ada: results[10],
-    adaBtc: results[11],
-    adaBch: results[12],
+    ada: results[1 + 1],
+    adaBch: results[2 + 1],
     // doge
-    doge: results[13],
-    dogeBtc: results[14],
-    dogeBch: results[15],
+    doge: results[3 + 1],
+    dogeBch: results[4 + 1],
     // ltc
-    ltc: results[16],
-    ltcBtc: results[17],
-    ltcBch: results[18],
+    ltc: results[5 + 1],
+    ltcBch: results[6 + 1],
     // vet
-    vet: results[19],
-    vetBtc: results[20],
-    vetBch: results[21],
-    vetEth: results[22],
+    vet: results[7 + 1],
+    vetBch: results[8 + 1],
     // bnb
-    bnb: results[23],
-    bnbBtc: results[24],
-    bnbBch: results[25],
+    bnb: results[9 + 1],
+    bnbBch: results[10 + 1],
     // xrp
-    xrp: results[26],
-    xrpBtc: results[27],
-    xrpBch: results[28],
+    xrp: results[11 + 1],
+    xrpBch: results[12 + 1],
     // etc
-    etc: results[29],
-    etcBtc: results[30],
-    etcBch: results[31],
+    etc: results[13 + 1],
+    etcBch: results[14 + 1],
     // dot
-    dot: results[32],
-    dotBtc: results[33],
-    dotBch: results[34],
+    dot: results[15 + 1],
+    dotBch: results[16 + 1],
     // sol
-    sol: results[35],
-    solBtc: results[36],
-    solBch: results[37],
+    sol: results[17 + 1],
+    solBch: results[18 + 1],
     // trx
-    trx: results[38],
-    trxBtc: results[39],
-    trxBch: results[40],
-    trxEth: results[41],
+    trx: results[19 + 1],
+    trxBch: results[20 + 1],
     // eos
-    eos: results[42],
-    eosBtc: results[43],
-    eosBch: results[44],
-    eosEth: results[45],
-    // xmr
-    xmr: results[46],
-    xmrBtc: results[47],
-    xmrBch: [48],
+    eos: results[21 + 1],
+    eosBch: results[22 + 1],
   };
 };

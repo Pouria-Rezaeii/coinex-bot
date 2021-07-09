@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  doge: number;
-  bch: number;
-  dogeBch: number;
-}
-
-export const printDogeBch = (response: IResponse, wallet: TWallet) => {
-  const { doge, bch, dogeBch, requestNumber } = response;
-  const { DOGE, BCH } = wallet;
+export const printDogeBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { doge, bch, dogeBch } = extractCurrencies(results);
+  const { doge: DOGE, bch: BCH } = wallet;
 
   const currentDogeValue = (doge * DOGE).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -40,7 +34,7 @@ export const printDogeBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "doge-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     doge,
     bch,
@@ -54,9 +48,7 @@ export const printDogeBch = (response: IResponse, wallet: TWallet) => {
     bchToDoge,
   };
 
-  console.log(result);
-
-  if (Number(bchToDogeDiff) > 0.3 || Number(dogeToBchDiff) > 0.3) {
+  if (Number(bchToDogeDiff) > 0.03 || Number(dogeToBchDiff) > 0.03) {
     fs.appendFile("resultDogeBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

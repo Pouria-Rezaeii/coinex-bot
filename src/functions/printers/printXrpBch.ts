@@ -1,16 +1,10 @@
-import { TWallet } from "../../types";
-const fs = require("fs");
+import { Wallet } from "../../types";
+import fs from "fs";
+import { extractCurrencies } from "../../utils";
 
-interface IResponse {
-  requestNumber: number;
-  xrp: number;
-  bch: number;
-  xrpBch: number;
-}
-
-export const printXrpBch = (response: IResponse, wallet: TWallet) => {
-  const { xrp, bch, xrpBch, requestNumber } = response;
-  const { XRP, BCH } = wallet;
+export const printXrpBch = (rq: number, results: string[], wallet: Wallet) => {
+  const { xrp, bch, xrpBch } = extractCurrencies(results);
+  const { xrp: XRP, bch: BCH } = wallet;
 
   const currentXrpValue = (xrp * XRP).toFixed(2);
   const currentBchValue = (bch * BCH).toFixed(2);
@@ -38,7 +32,7 @@ export const printXrpBch = (response: IResponse, wallet: TWallet) => {
 
   const result = {
     type: "xrp-bch",
-    rq: requestNumber,
+    rq,
     time: `date: ${new Date().toLocaleDateString()}, time: ${new Date().toLocaleTimeString()}`,
     xrp,
     bch,
@@ -52,9 +46,7 @@ export const printXrpBch = (response: IResponse, wallet: TWallet) => {
     bchToXrp,
   };
 
-  console.log(result);
-
-  if (Number(bchToXrpDiff) > 0.3 || Number(xrpToBchDiff) > 0.3) {
+  if (Number(bchToXrpDiff) > 0.03 || Number(xrpToBchDiff) > 0.03) {
     fs.appendFile("resultXrpBch.txt", `${JSON.stringify(result)}\n`, () => {});
   }
 };

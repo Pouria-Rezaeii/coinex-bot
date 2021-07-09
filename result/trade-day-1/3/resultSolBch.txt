@@ -1,1 +1,0 @@
-{"type":"sol-bch","rq":1004,"time":"date: 7/6/2021, time: 10:41:29 AM","sol":"34.1482","bch":"524.66","solBch":"0.06664357","currentSolValue":"51.99","currentBchValue":"53.41","balance":"105.40","calculatedSolBch":"0.0650863416","diff":"-0.0015572284","solToBch":{"amount":"0.101472","value":"53.24","diff":"1.25"},"bchToSol":{"amount":"1.53","value":"52.16","diff":"-1.25"}}

@@ -1,1 +1,0 @@
-{"type":"ltc-bch","rq":846,"time":"date: 7/6/2021, time: 10:33:31 AM","ltc":"141.87","bch":"524.44","ltcBch":"0.27217052","currentLtcValue":"52.69","currentBchValue":"53.38","balance":"106.08","calculatedLtcBch":"0.2705171230","diff":"-0.0016533970","ltcToBch":{"amount":"0.101088","value":"53.01","diff":"0.32"},"bchToLtc":{"amount":"0.37","value":"53.06","diff":"-0.32"}}
