@@ -1,8 +1,10 @@
 import { getAccountInfo, getMarket } from "./api";
+import { cancelOrder } from "./api/cancelOrder";
 import * as printers from "./functions/printers";
 import { realTrader } from "./functions/realTrader";
 import * as traders from "./functions/traders";
 import { AccountInfoResponse, Wallet } from "./types";
+import { extractCurrencies } from "./utils";
 
 let requestNumber = 1;
 
@@ -45,11 +47,24 @@ const getPrices = async () => {
     // eos
     getMarket("EOSUSDT"),
     getMarket("EOSBCH"),
+    // cancel all possible previous orders
+    cancelOrder("ADABCH"),
+    cancelOrder("BNBBCH"),
+    cancelOrder("DOGEBCH"),
+    cancelOrder("DOTBCH"),
+    cancelOrder("EOSBCH"),
+    cancelOrder("ETCBCH"),
+    cancelOrder("LTCBCH"),
+    cancelOrder("SOLBCH"),
+    cancelOrder("TRXBCH"),
+    cancelOrder("VETBCH"),
+    cancelOrder("XRPBCH"),
   ]);
 
   const accountInfo = results[0] as AccountInfoResponse;
   if (accountInfo.code === 0) {
     const _wallet = accountInfo.data;
+
     const isUnexecutedOrder = Object.keys(_wallet).some(
       (item) => !!Number(_wallet[item].frozen)
     );
@@ -84,17 +99,16 @@ const getPrices = async () => {
     printers.printXrpBch(requestNumber, results, wallet);
     printers.printDogeBch(requestNumber, results, wallet);
 
-    traders.trader_30(requestNumber, results);
+    traders.trader_30(requestNumber, results, wallet);
 
     if (!isUnexecutedOrder) {
       realTrader(requestNumber, results, wallet);
     }
   }
-
   console.log("rq: ", requestNumber, new Date().toLocaleTimeString());
   requestNumber++;
 };
 
 setInterval(() => {
   getPrices();
-}, 10000);
+}, 3000);

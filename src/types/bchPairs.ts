@@ -1,4 +1,4 @@
-export type Market =
+export type BchWithOthersPair =
   | "DOGEBCH"
   | "ADABCH"
   | "LTCBCH"

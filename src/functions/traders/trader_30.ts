@@ -1,29 +1,14 @@
 import { extractCurrencies } from "../../utils";
 import fs from "fs";
+import { Wallet } from "../../types";
 
-let wallet = {
-  BCH: 20 / 520,
-  ADA: 0,
-  BNB: 0,
-  DOT: 0,
-  EOS: 0,
-  ETC: 0,
-  ETH: 0,
-  LTC: 0,
-  SOL: 0,
-  TRX: 0,
-  VET: 0,
-  XRP: 0,
-  DOGE: 0,
-};
+let avPortion = 3;
 
-let avPortion = 4;
-
-export const trader_30 = (rq: number, results: any[]) => {
+export const trader_30 = (rq: number, results: any[], wallet: Wallet) => {
   const rs = extractCurrencies(results);
 
   // bch each portion
-  const bchEachP = avPortion ? wallet.BCH / avPortion : 0;
+  const bchEachP = avPortion ? wallet.bch / avPortion : 0;
   // bch each portion value
   const bchEachPVal = bchEachP * rs.bch;
 
@@ -39,18 +24,18 @@ export const trader_30 = (rq: number, results: any[]) => {
   const bchToXrpDiff = (bchEachP / rs.xrpBch) * rs.xrp - bchEachPVal;
   const bchToDogeDiff = (bchEachP / rs.dogeBch) * rs.doge - bchEachPVal;
 
-  const adaToBchDiff = wallet.ADA * rs.adaBch * rs.bch - wallet.ADA * rs.ada;
-  const vetToBchDiff = wallet.VET * rs.vetBch * rs.bch - wallet.VET * rs.vet;
-  const bnbToBchDiff = wallet.BNB * rs.bnbBch * rs.bch - wallet.BNB * rs.bnb;
-  const solToBchDiff = wallet.SOL * rs.solBch * rs.bch - wallet.SOL * rs.sol;
-  const dotToBchDiff = wallet.DOT * rs.dotBch * rs.bch - wallet.DOT * rs.dot;
-  const eosToBchDiff = wallet.EOS * rs.eosBch * rs.bch - wallet.EOS * rs.eos;
-  const ltcToBchDiff = wallet.LTC * rs.ltcBch * rs.bch - wallet.LTC * rs.ltc;
-  const etcToBchDiff = wallet.ETC * rs.etcBch * rs.bch - wallet.ETC * rs.etc;
-  const trxToBchDiff = wallet.TRX * rs.trxBch * rs.bch - wallet.TRX * rs.trx;
-  const xrpToBchDiff = wallet.XRP * rs.xrpBch * rs.bch - wallet.XRP * rs.xrp;
+  const adaToBchDiff = wallet.ada * rs.adaBch * rs.bch - wallet.ada * rs.ada;
+  const vetToBchDiff = wallet.vet * rs.vetBch * rs.bch - wallet.vet * rs.vet;
+  const bnbToBchDiff = wallet.bnb * rs.bnbBch * rs.bch - wallet.bnb * rs.bnb;
+  const solToBchDiff = wallet.sol * rs.solBch * rs.bch - wallet.sol * rs.sol;
+  const dotToBchDiff = wallet.dot * rs.dotBch * rs.bch - wallet.dot * rs.dot;
+  const eosToBchDiff = wallet.eos * rs.eosBch * rs.bch - wallet.eos * rs.eos;
+  const ltcToBchDiff = wallet.ltc * rs.ltcBch * rs.bch - wallet.ltc * rs.ltc;
+  const etcToBchDiff = wallet.etc * rs.etcBch * rs.bch - wallet.etc * rs.etc;
+  const trxToBchDiff = wallet.trx * rs.trxBch * rs.bch - wallet.trx * rs.trx;
+  const xrpToBchDiff = wallet.xrp * rs.xrpBch * rs.bch - wallet.xrp * rs.xrp;
   const dogeToBchDiff =
-    wallet.DOGE * rs.dogeBch * rs.bch - wallet.DOGE * rs.doge;
+    wallet.doge * rs.dogeBch * rs.bch - wallet.doge * rs.doge;
 
   console.log({
     "bch-to-Ada": bchToAdaDiff,
@@ -78,223 +63,86 @@ export const trader_30 = (rq: number, results: any[]) => {
   });
 
   // ada - - - - - - - - - - - - - - - - - - - - -
-  if (bchToAdaDiff > 0.03 && wallet.ADA === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      ADA: bchEachP / rs.adaBch,
-    };
-    avPortion -= 1;
+  if (bchToAdaDiff > 0.03 && wallet.ada === 0 && avPortion > 0) {
     printer("bch to ada");
   }
-
-  if (adaToBchDiff > 0.03 && wallet.ADA > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.ADA * rs.adaBch,
-      ADA: 0,
-    };
-    avPortion += 1;
+  if (adaToBchDiff > 0.03 && wallet.ada > 0) {
     printer("ada to bch");
   }
   // vet - - - - - - - - - - - - - - - - - - - - -
-  if (bchToVetDiff > 0.03 && wallet.VET === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      VET: bchEachP / rs.vetBch,
-    };
-    avPortion -= 1;
+  if (bchToVetDiff > 0.03 && wallet.vet === 0 && avPortion > 0) {
     printer("bch to vet");
   }
-
-  if (vetToBchDiff > 0.03 && wallet.VET > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.VET * rs.vetBch,
-      VET: 0,
-    };
-    avPortion += 1;
+  if (vetToBchDiff > 0.03 && wallet.vet > 0) {
     printer("vet to bch");
   }
   // bnb - - - - - - - - - - - - - - - - - - - - -
-  if (bchToBnbDiff > 0.03 && wallet.BNB === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      BNB: bchEachP / rs.bnbBch,
-    };
-    avPortion -= 1;
+  if (bchToBnbDiff > 0.03 && wallet.bnb === 0 && avPortion > 0) {
     printer("bch to bnb");
   }
-
-  if (bnbToBchDiff > 0.03 && wallet.BNB > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.BNB * rs.bnbBch,
-      BNB: 0,
-    };
-    avPortion += 1;
+  if (bnbToBchDiff > 0.03 && wallet.bnb > 0) {
     printer("bnb to bch");
   }
   // sol - - - - - - - - - - - - - - - - - - - - -
-  if (bchToSolDiff > 0.03 && wallet.SOL === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      SOL: bchEachP / rs.solBch,
-    };
-    avPortion -= 1;
+  if (bchToSolDiff > 0.03 && wallet.sol === 0 && avPortion > 0) {
     printer("bch to sol");
   }
-
-  if (solToBchDiff > 0.03 && wallet.SOL > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.SOL * rs.solBch,
-      SOL: 0,
-    };
-    avPortion += 1;
+  if (solToBchDiff > 0.03 && wallet.sol > 0) {
     printer("sol to bch");
   }
   // dot - - - - - - - - - - - - - - - - - - - - -
-  if (bchToDotDiff > 0.03 && wallet.DOT === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      DOT: bchEachP / rs.dotBch,
-    };
-    avPortion -= 1;
+  if (bchToDotDiff > 0.03 && wallet.dot === 0 && avPortion > 0) {
     printer("bch to dot");
   }
-
-  if (dotToBchDiff > 0.03 && wallet.DOT > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.DOT * rs.dotBch,
-      DOT: 0,
-    };
-    avPortion += 1;
+  if (dotToBchDiff > 0.03 && wallet.dot > 0) {
     printer("dot to bch");
   }
   // eos - - - - - - - - - - - - - - - - - - - - -
-  if (bchToEosDiff > 0.03 && wallet.EOS === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      EOS: bchEachP / rs.eosBch,
-    };
-    avPortion -= 1;
+  if (bchToEosDiff > 0.03 && wallet.eos === 0 && avPortion > 0) {
     printer("bch to eos");
   }
 
-  if (eosToBchDiff > 0.03 && wallet.EOS > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.EOS * rs.eosBch,
-      EOS: 0,
-    };
-    avPortion += 1;
+  if (eosToBchDiff > 0.03 && wallet.eos > 0) {
     printer("eos to bch");
   }
   // ltc - - - - - - - - - - - - - - - - - - - - -
-  if (bchToLtcDiff > 0.03 && wallet.LTC === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      LTC: bchEachP / rs.ltcBch,
-    };
-    avPortion -= 1;
+  if (bchToLtcDiff > 0.03 && wallet.ltc === 0 && avPortion > 0) {
     printer("bch to ltc");
   }
 
-  if (ltcToBchDiff > 0.03 && wallet.LTC > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.LTC * rs.ltcBch,
-      LTC: 0,
-    };
-    avPortion += 1;
+  if (ltcToBchDiff > 0.03 && wallet.ltc > 0) {
     printer("ltc to bch");
   }
   // etc - - - - - - - - - - - - - - - - - - - - -
-  if (bchToEtcDiff > 0.03 && wallet.ETC === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      ETC: bchEachP / rs.etcBch,
-    };
-    avPortion -= 1;
+  if (bchToEtcDiff > 0.03 && wallet.etc === 0 && avPortion > 0) {
     printer("bch to etc");
   }
 
-  if (etcToBchDiff > 0.03 && wallet.ETC > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.ETC * rs.etcBch,
-      ETC: 0,
-    };
-    avPortion += 1;
+  if (etcToBchDiff > 0.03 && wallet.etc > 0) {
     printer("etc to bch");
   }
   // trx - - - - - - - - - - - - - - - - - - - - -
-  if (bchToTrxDiff > 0.03 && wallet.TRX === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      TRX: bchEachP / rs.trxBch,
-    };
-    avPortion -= 1;
+  if (bchToTrxDiff > 0.03 && wallet.trx === 0 && avPortion > 0) {
     printer("bch to trx");
   }
 
-  if (trxToBchDiff > 0.03 && wallet.TRX > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.TRX * rs.trxBch,
-      TRX: 0,
-    };
-    avPortion += 1;
+  if (trxToBchDiff > 0.03 && wallet.trx > 0) {
     printer("trx to bch");
   }
   // xrp - - - - - - - - - - - - - - - - - - - - -
-  if (bchToXrpDiff > 0.03 && wallet.XRP === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      XRP: bchEachP / rs.xrpBch,
-    };
-    avPortion -= 1;
+  if (bchToXrpDiff > 0.03 && wallet.xrp === 0 && avPortion > 0) {
     printer("bch to xrp");
   }
 
-  if (xrpToBchDiff > 0.03 && wallet.XRP > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.XRP * rs.xrpBch,
-      XRP: 0,
-    };
-    avPortion += 1;
+  if (xrpToBchDiff > 0.03 && wallet.xrp > 0) {
     printer("xrp to bch");
   }
   // doge - - - - - - - - - - - - - - - - - - - - -
-  if (bchToDogeDiff > 0.03 && wallet.DOGE === 0 && avPortion > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH - bchEachP,
-      DOGE: bchEachP / rs.dogeBch,
-    };
-    avPortion -= 1;
+  if (bchToDogeDiff > 0.03 && wallet.doge === 0 && avPortion > 0) {
     printer("bch to doge");
   }
 
-  if (dogeToBchDiff > 0.03 && wallet.DOGE > 0) {
-    wallet = {
-      ...wallet,
-      BCH: wallet.BCH + wallet.DOGE * rs.dogeBch,
-      DOGE: 0,
-    };
-    avPortion += 1;
+  if (dogeToBchDiff > 0.03 && wallet.doge > 0) {
     printer("doge to bch");
   }
 
